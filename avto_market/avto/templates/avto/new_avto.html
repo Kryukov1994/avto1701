@@ -53,7 +53,17 @@
     border: 1px solid #777;
     background-color: white;
     color: black;
+
   }
+
+  @media (max-width: 767px) {
+    .form-container {
+      max-width: 300px; /* Ограничиваем максимальную ширину формы на мобильных устройствах */
+      margin: 0 auto; /* Центрируем форму по горизонтали */
+      padding: 10px; /* Добавляем небольшой отступ вокруг формы */
+    }
+  }
+  
 </style>
 
 <div class="form-container">

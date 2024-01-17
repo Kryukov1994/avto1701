@@ -130,3 +130,33 @@ nav ul li a:hover {
   font-size: 16px;
   font-weight: bold;
 }
+
+
+@media (max-width: 767px) {
+  /* Стили для устройств с шириной экрана до 767px */
+  .container {
+    padding: 10px;
+  }
+  
+  header {
+    padding: 10px;
+  }
+  
+  h1 {
+    font-size: 20px;
+  }
+  
+  .card-container {
+    justify-content: center;
+  }
+  
+  .card {
+    width: calc(50% - 10px);
+  }
+  .card:hover {
+    background-color: initial;
+    width: initial;
+    border: initial;
+    box-shadow: initial;
+  }
+}

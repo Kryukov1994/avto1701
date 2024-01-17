@@ -1,7 +1,25 @@
 {% extends 'avto/base.html' %}
 {% load static %}
 
+
+
 {% block content1 %} 
+
+<style>
+  @media (max-width: 767px) {
+    .card-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .card {
+      width: 100%;
+      margin: 10px;
+      max-width: 300px;  /* Ограничиваем ширину карточки на мобильных устройствах */
+    }
+  }
+  </style>
 
   <div class="card-container">
     {% for avto in avtos %}

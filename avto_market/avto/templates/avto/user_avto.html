@@ -45,6 +45,19 @@
     }
 
 
+    @media (max-width: 767px) {
+      .card-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      .card {
+        width: 100%;
+        margin: 10px;
+      }
+    }
+
   </style>
 
   <p style="margin-bottom: 30px;"><a href="{% url 'avto:new_avto' %}" class="red-bottom">Добавить объявление</a>
