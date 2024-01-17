@@ -1,0 +1,73 @@
+{% extends 'avto/base.html' %}
+{% load static %}
+
+{% block content1 %}
+
+<head>
+    <title>{{ avto.brand }} {{ avto.model }}</title>
+    <style>
+
+
+        .title {
+            color: #bdc55f;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .info {
+            color: black;
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            
+        }
+
+        .image {
+            max-width: 70%;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border: 5px solid black;
+        }
+
+        .auction-link {
+            display: inline-block;
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-top: 10px;
+            float: left;
+        }
+
+        .auction-link:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <h1 class="title">{{ avto.brand }} {{ avto.model }}</h1>
+    <p class="info"><strong>Год выпуска:</strong> <span style="color:white">{{ avto.year }}</style></p>
+    <p class="info"><strong>Цена:</strong> <span style="color:white">{{ avto.price }}</style></p>
+    <p class="info"><strong>Руль:</strong><span style="color:white"> {{ avto.get_steering_display }}</style></p>
+    <p class="info"><strong>Пробег:</strong> <span style="color:white">{{ avto.mileage }}</style></p>
+    <p class="info"><strong>Трансмиссия:</strong><span style="color:white"> {{ avto.get_transmission_display }}</style></p>
+    <p class="info"><strong>Привод:</strong> <span style="color:white">{{ avto.get_drive_display }}</style></p>
+    <p class="info"><strong>Топливо:</strong><span style="color:white"> {{ avto.get_fuel_display }}</style></p>
+    <p class="info"><strong>Дата размещения: </strong><span style="color:white">{{ avto.created|date:"Y-m-d" }}</style></p>
+    {% if avto.description %}
+        <p class="info">Описание: <span style="color:white">{{ avto.description }}</style></p>
+    {% endif %}
+    {% if avto.image %}
+        <img class="image" src="{{ avto.image.url }}" alt="Car Image">
+    {% endif %}
+    <div style="clear: both;"></div>
+    <a class="auction-link" href="#">Аукцион</a>
+</body>
+</html>
+
+{% endblock %}

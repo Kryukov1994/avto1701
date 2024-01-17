@@ -1,0 +1,27 @@
+{% extends 'avto/base.html' %}
+{% load static %}
+
+{% block content1 %} 
+
+  <div class="card-container">
+    {% for avto in avtos %}
+      <div class="card">
+        <a href="{% url 'avto:avto_detail' avto.id %}">
+          <div class="card-image">
+           <img src="{% if avto.image %}{{ avto.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="{{ avto.brand }} {{ avto.model }}">
+          </div>
+          <div class="card-details">
+            <h3>{{ avto.brand }}</h3>
+            <p>{{ avto.model }}</p>
+            <p>Год выпуска: {{ avto.year }}</p>
+            <p>Цена: {{ avto.price }}</p>
+            <p>Дата создания: {{ avto.created|date:"F j, Y" }}</p>
+          </div>
+        </a>
+      </div>
+    {% empty %}
+      <p>Лоты отсутствуют</p>
+    {% endfor %}
+  </div>
+
+{% endblock %}
