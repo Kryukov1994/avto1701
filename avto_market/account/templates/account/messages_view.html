@@ -4,32 +4,36 @@
 {% block content1 %}
 
     <style>
-        /* Стили для списка сообщений */
-        ul {
+        .inbox {
             list-style-type: none;
             margin: 0;
-            padding: 0;
+            padding: 10px;
+            border: 3px solid black;
+            background-color: white;
+            box-shadow: 0 0 15px white;
         }
 
-        /* Стили для элемента списка сообщений */
-        li {
+        .item {
             margin-bottom: 10px;
             background-color: #333;
             color: #fff;
             padding: 10px;
         }
 
-        /* Стили для ссылки на сообщение */
-        li a {
+        .item:hover {
+            background-color: #4d1911;
+        }
+
+        .item a {
             text-decoration: none;
             color: #fff;
             font-size: 16px;
         }
 
-        .edit-button {
-            background-color: #000000;
-            color: white;
-            border: none;
+        .red-bottom {
+            background-color: #4d1911;;
+            color: yellow;
+            border: 0.5px solid black;
             padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
@@ -37,38 +41,48 @@
             font-weight: bold;
             cursor: pointer;
             margin-bottom: 30px;
-                
-        }
-
-        .edit-button:hover {
-            background-color: white;
+          }
+      
+          .red-bottom:hover {
+            background-color: yellow;
             color: black;
             border: 3px solid black;
             font-size: 17px;
+            font-weight: bold;
           }
+
+        .container {
+
+            color: black;
+            font-size: 17px;
+            padding: 20px;
+        }
 
         
     </style>
 
-    <p style="margin-bottom: 20px ; color: white;"><a href="{% url 'account:send_message' %}" class="edit-button" >Отправить сообщение</a></p>
+    <p style="margin-bottom: 20px ; color: white;"><a href="{% url 'account:send_message' %}" class="red-bottom" >Отправить сообщение</a></p>
 
     {% if messages %}
-        <ul><h3> Входящие :  </h3>
+    <div class="container">
+        <ul class="inbox"><h3>Входящие:</h3>
             {% for message in messages %}
                 {% if not message.sender == request.user %}
-                    <li><a href="{% url 'account:messages_detail' message.id %}">От: {{ message.sender}} {{message.created_at|date:"Y-m-d"}}</a></li>
+                    <li class="item"><a href="{% url 'account:messages_detail' message.id %}">От: {{ message.sender}} {{message.created_at|date:"Y-m-d"}}</a></li>
                 {% endif %}
             {% endfor %}
         </ul>
-        <ul> <h3> Отправленные :  </h3>
+        <ul class="inbox"><h3>Отправленные:</h3>
             {% for message in messages %}
                 {% if message.sender == request.user %}
-                    <li><a href="{% url 'account:messages_detail' message.id %}">Получатель: {{ message.recipient}}   {{message.created_at|date:"Y-m-d"}}</a></li>
+                    <li class="item"><a href="{% url 'account:messages_detail' message.id %}">Получатель: {{ message.recipient}}   {{message.created_at|date:"Y-m-d"}}</a></li>
                 {% endif %}
             {% endfor %}
         </ul>
-    {% else %}
-        <p>Почтовый ящик пуст</p>
-    {% endif %}
+    </div>
+{% else %}
+    <p>Почтовый ящик пуст</p>
+{% endif %}
 
 {% endblock %}
+
