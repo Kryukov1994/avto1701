@@ -24,11 +24,13 @@
 
         
       {% else %}
+      <li><a href="{% url 'account:register' %}"> Регистрация </a> </li>
       <li><a href="{% url 'account:login' %}"> Авторизироваться </a> </li>
-      
-      {% endif %}
       <li><a href="{% url 'avto:avto_list' %}">Лоты</a></li>
       <li><a href="{% url 'avto:index' %}">Главная</a></li>
+      
+      {% endif %}
+
     
       
   
