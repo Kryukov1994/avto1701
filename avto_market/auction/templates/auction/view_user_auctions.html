@@ -60,7 +60,7 @@
             <p style="color:yellow;font-size: 16px;font-weight: bold;">Стартовая цена: {{ auction.start_price}}</p>
             
             <p style="color:yellow;font-size: 16px;font-weight: bold;">Торги заканчиваются: {{ auction.end_time}}</p>
-            <p style="color:yellow;font-size: 16px;font-weight: bold;">Последние предложение: {{ auction.last_bid_price}}</p>
+            
             
 
             <a class="auction-link"   href="{% url 'auction:edit_auction' auction.id %}">Изменить аукцион</a>
