@@ -7,6 +7,7 @@ from avto.models import Avto
 from django.contrib.auth.models import User
 from account.models import Message, Profile
 from django.urls import reverse
+from django.core.mail import send_mail
 
 
 @login_required
@@ -138,6 +139,13 @@ def winner(request, auction_id):
         'bidders': bidders,
         'winner': winner
     }
+    
+    subject = 'Поздравляем с победой на аукционе'
+    message_text = f"Вы победили в аукционе {auction.avto} - {auction.avto.model}. Ниже ссылка на выигранный аукцион:\n{absolute_url}"
+    email_from = 'seva2411@yandex.ru'
+    recipient_list = [winner.email]
+    send_mail(subject, message_text, email_from, recipient_list)
+    
 
     return render(request, 'auction/winner.html', context)
 

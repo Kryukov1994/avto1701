@@ -133,3 +133,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+
+# Конфигурация сервера электронной почты
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST_USER = 'seva2411@yandex.ru'
+EMAIL_HOST_PASSWORD = 'zkaodwlfakhynrgc'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
